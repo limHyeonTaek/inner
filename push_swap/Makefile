@@ -52,7 +52,7 @@ LIB = ftprintf
 
 RM = rm -rf
 
-%.o 			: %c
+%.o 			: %.c
 		$(CC) $(CFLAGS) $(MAN_INCLUDES) -c $< -o $@
 
 $(MANDATORY) 	: $(OBJS)
