@@ -6,12 +6,14 @@
 #    By: hylim <hylim@student.42gyeongsan.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/04 11:07:06 by hylim             #+#    #+#              #
-#    Updated: 2024/11/07 14:24:46 by hylim            ###   ########.fr        #
+#    Updated: 2024/11/09 14:28:04 by hylim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I$(INCLUDES) -I$(MLX_PATH) -I$(PRINTF_PATH)
+CFLAGS = -Wall -Wextra -Werror $(INCLUDES)
+
+INCLUDES = -I./includes -I$(MLX_PATH) -I$(PRINTF_PATH) -I$(LIBFT_PATH)
 
 NAME = fdf
 
@@ -21,7 +23,8 @@ MLX_LIBS = -lXext -lX11 -lm
 
 PRINTF_PATH = ./ft_printf
 PRINTF = $(PRINTF_PATH)libftprintf.a
-INCLUDES = ./includes
+
+LIBFT_PATH = ./ft_printf/libft
 
 SRC_DIR = ./srcs/
 OBJ_DIR = ./obj/
