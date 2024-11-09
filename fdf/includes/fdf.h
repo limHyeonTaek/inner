@@ -6,7 +6,7 @@
 /*   By: hylim <hylim@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:19:25 by hylim             #+#    #+#             */
-/*   Updated: 2024/11/08 22:13:42 by hylim            ###   ########.fr       */
+/*   Updated: 2024/11/09 14:01:09 by hylim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,8 @@
 # include "mlx.h"
 # include <math.h>
 # include "ft_printf.h"
-
 # include "colors.h"
-# include "keys_n_mouse.h"
-
+# include "keys_n_mouse_bonus.h"
 
 typedef struct s_point
 {

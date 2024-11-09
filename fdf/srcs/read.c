@@ -6,7 +6,7 @@
 /*   By: hylim <hylim@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:17:26 by hylim             #+#    #+#             */
-/*   Updated: 2024/11/07 17:19:19 by hylim            ###   ########.fr       */
+/*   Updated: 2024/11/09 13:52:31 by hylim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_map	*read_map(char *file_name)
 
 	fd = open(file_name, O_RDONLY, 0);
 	if (fd < 0)
-		return (ft_printf("No file : %s\n", file_name), NULL);
+		return (NULL);
 	close(fd);
 	map = init_map();
 	if (!map)

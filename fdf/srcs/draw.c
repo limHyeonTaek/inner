@@ -6,7 +6,7 @@
 /*   By: hylim <hylim@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:16:32 by hylim             #+#    #+#             */
-/*   Updated: 2024/11/08 21:46:39 by hylim            ###   ########.fr       */
+/*   Updated: 2024/11/09 14:00:35 by hylim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	bresenham(t_fdf *fdf, t_point start, t_point end)
 	int		max_steps;
 	int		i_line;
 	t_color	*color;
- 
+
 	x_step = end.x - start.x;
 	y_step = end.y - start.y;
 	max_steps = (int)max(absolute(x_step), absolute(y_step));

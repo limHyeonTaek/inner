@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keys_n_mouse.h                                     :+:      :+:    :+:   */
+/*   keys_n_mouse_bonus.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hylim <hylim@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:19:42 by hylim             #+#    #+#             */
-/*   Updated: 2024/11/07 13:21:09 by hylim            ###   ########.fr       */
+/*   Updated: 2024/11/09 13:47:38 by hylim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef KEYS_N_MOUSE_H
-# define KEYS_N_MOUSE_H
+#ifndef KEYS_N_MOUSE_BONUS_H
+# define KEYS_N_MOUSE_BONUS_H
 
 # define MOUSE_LEFT_BUTTON 1
 # define MOUSE_RIGHT_BUTTON 3

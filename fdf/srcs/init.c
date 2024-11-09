@@ -6,7 +6,7 @@
 /*   By: hylim <hylim@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:16:51 by hylim             #+#    #+#             */
-/*   Updated: 2024/11/07 12:16:21 by hylim            ###   ########.fr       */
+/*   Updated: 2024/11/09 13:53:59 by hylim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_fdf	*init_fdf(char *file_name)
 	if (!fdf->map)
 	{
 		free(fdf);
+		ft_printf("%s : ", file_name);
 		error(4);
 	}
 	fdf->mlx = mlx_init();
