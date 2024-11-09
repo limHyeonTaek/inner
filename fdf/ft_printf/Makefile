@@ -6,12 +6,12 @@
 #    By: hylim <hylim@student.42gyeongsan.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/16 19:28:32 by hylim             #+#    #+#              #
-#    Updated: 2024/10/25 14:31:30 by hylim            ###   ########.fr        #
+#    Updated: 2024/11/09 14:17:00 by hylim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I.
+CFLAGS = -Wall -Wextra -Werror -I. -I$(LIBFT_DIR)
 
 SRCS = 		ft_printf.c \
 			print_hex.c \

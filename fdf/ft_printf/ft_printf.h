@@ -6,7 +6,7 @@
 /*   By: hylim <hylim@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 11:26:09 by hylim             #+#    #+#             */
-/*   Updated: 2024/10/28 17:55:48 by hylim            ###   ########.fr       */
+/*   Updated: 2024/11/09 14:17:12 by hylim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include "./libft/libft.h"
+# include "libft.h"
 
 int	print_c(va_list *ap);
 int	print_s(va_list *ap);

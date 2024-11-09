@@ -6,7 +6,7 @@
 /*   By: hylim <hylim@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 09:58:07 by hylim             #+#    #+#             */
-/*   Updated: 2024/11/04 16:17:25 by hylim            ###   ########.fr       */
+/*   Updated: 2024/11/09 14:16:01 by hylim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,12 +80,6 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 // get_next_line
-char	*ft_dup_after_nl(char *s);
-char	*gnl_strjoin(char *s1, char *s2);
-char	*ft_dup_upto_nl(char *s);
 char	*get_next_line(int fd);
-char	*ft_read_buf(int fd, char *tmp);
-size_t	gnl_strlen(char *s);
-char	*gnl_strchr(char *s, int c);
 
 #endif
