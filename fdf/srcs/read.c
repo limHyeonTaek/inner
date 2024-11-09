@@ -6,7 +6,7 @@
 /*   By: hylim <hylim@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:17:26 by hylim             #+#    #+#             */
-/*   Updated: 2024/11/04 20:33:01 by hylim            ###   ########.fr       */
+/*   Updated: 2024/11/07 17:19:19 by hylim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,18 @@ t_map	*read_map(char *file_name)
 
 	fd = open(file_name, O_RDONLY, 0);
 	if (fd < 0)
-		error(2);
+		return (ft_printf("No file : %s\n", file_name), NULL);
 	close(fd);
 	map = init_map();
 	if (!map)
 		return (NULL);
 	map->max_x = get_width(file_name);
+	if (!map->max_x)
+		return (NULL);
 	map->max_y = get_depth(file_name);
 	map->coordinates = init_coordinates(map->max_x, map->max_y);
 	if (!map->coordinates)
-	{
-		free(map);
-		return (NULL);
-	}
+		return (free(map), NULL);
 	get_points(file_name, map);
 	center_to_origin(map);
 	return (map);
@@ -53,14 +52,14 @@ static int	get_width(char *file_name)
 	line = get_next_line(fd);
 	if (!line)
 		return (0);
-	width = (int)ft_split_count(line, ' ');
+	width = ft_split_count(line, ' ');
 	free(line);
 	while (1)
 	{
 		line = get_next_line(fd);
-		if (line == NULL)
+		if (!line)
 			break ;
-		new_width = (int)ft_split_count(line, ' ');
+		new_width = ft_split_count(line, ' ');
 		if (width != new_width)
 			return (0);
 		free(line);
@@ -80,7 +79,7 @@ static int	get_depth(char *file_name)
 	while (1)
 	{
 		line = get_next_line(fd);
-		if (line == NULL)
+		if (!line)
 			break ;
 		if (ft_isprint(*line))
 			depth++;
@@ -102,7 +101,7 @@ static void	get_points(char *file_name, t_map *map)
 	while (1)
 	{
 		line = get_next_line(fd);
-		if (line == NULL)
+		if (!line)
 			break ;
 		split = ft_split(line, ' ');
 		coord[0] = 0;

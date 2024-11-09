@@ -6,18 +6,14 @@
 /*   By: hylim <hylim@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:17:13 by hylim             #+#    #+#             */
-/*   Updated: 2024/11/04 20:32:52 by hylim            ###   ########.fr       */
+/*   Updated: 2024/11/07 12:26:20 by hylim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 static char	*get_projection_name(t_fdf *fdf);
-
-static void	put_str(void *mlx, void *win, int *y, char *str)
-{
-	mlx_string_put(mlx, win, 50, *y += 20, C_TEXT, str);
-}
+static void	put_str(void *mlx, void *win, int *y, char *str);
 
 void	print_menu(t_fdf *fdf)
 {
@@ -53,4 +49,9 @@ static char	*get_projection_name(t_fdf *fdf)
 	else if (fdf->cam->projection == TOP)
 		projection = "Top view";
 	return (projection);
+}
+
+static void	put_str(void *mlx, void *win, int *y, char *str)
+{
+	mlx_string_put(mlx, win, 50, *y += 20, C_TEXT, str);
 }

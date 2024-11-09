@@ -1,19 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   transform.c                                        :+:      :+:    :+:   */
+/*   transform_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hylim <hylim@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:17:45 by hylim             #+#    #+#             */
-/*   Updated: 2024/11/04 20:33:12 by hylim            ###   ########.fr       */
+/*   Updated: 2024/11/08 12:51:08 by hylim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-void	scale(t_line *line, int scale_factor);
-void	translate(t_line *line, int move_x, int move_y);
 
 void	transform(t_cam *cam, t_line *line)
 {

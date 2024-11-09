@@ -6,7 +6,7 @@
 /*   By: hylim <hylim@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:17:31 by hylim             #+#    #+#             */
-/*   Updated: 2024/11/04 20:33:05 by hylim            ###   ########.fr       */
+/*   Updated: 2024/11/08 21:21:32 by hylim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,14 +71,14 @@ static void	apply_colors(t_fdf *fdf, t_point *point)
 	{
 		if (point->z >= 0)
 		{
-			col = color_pallet_init(C_GREY, C_ORANGY);
+			col = color_pallet_init(C_CYAN, C_GREEN);
 			point->color = get_color(col, absolute(point->z),
 					absolute(fdf->map->max_z));
 			free(col);
 		}
 		else
 		{
-			col = color_pallet_init(C_GREY, C_BLUEY);
+			col = color_pallet_init(C_CYAN, C_ORANGE);
 			point->color = get_color(col, absolute(point->z),
 					absolute(fdf->map->max_z));
 			free(col);

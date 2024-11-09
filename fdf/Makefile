@@ -6,7 +6,7 @@
 #    By: hylim <hylim@student.42gyeongsan.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/04 11:07:06 by hylim             #+#    #+#              #
-#    Updated: 2024/11/04 21:18:12 by hylim            ###   ########.fr        #
+#    Updated: 2024/11/07 14:24:46 by hylim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,16 +32,19 @@ SRCS = $(SRC_DIR)close.c \
        $(SRC_DIR)error.c \
        $(SRC_DIR)init_utils.c \
        $(SRC_DIR)init.c \
-       $(SRC_DIR)key_handle.c \
+       $(SRC_DIR)key_handle_bonus.c \
+       $(SRC_DIR)key_handle_util_bonus.c \
+       $(SRC_DIR)key_update_bonus.c \
        $(SRC_DIR)main.c \
        $(SRC_DIR)menu.c \
        $(SRC_DIR)mouse_handle.c \
-       $(SRC_DIR)project.c \
+       $(SRC_DIR)project_bonus.c \
        $(SRC_DIR)read.c \
        $(SRC_DIR)render.c \
-       $(SRC_DIR)rotate.c \
-       $(SRC_DIR)transform.c \
-       $(SRC_DIR)utils.c
+       $(SRC_DIR)rotate_bonus.c \
+       $(SRC_DIR)transform_bonus.c \
+       $(SRC_DIR)utils.c \
+       $(SRC_DIR)utils2.c
 
 OBJS = $(SRCS:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
 

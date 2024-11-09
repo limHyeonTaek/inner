@@ -6,47 +6,24 @@
 /*   By: hylim <hylim@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:19:25 by hylim             #+#    #+#             */
-/*   Updated: 2024/11/04 20:18:51 by hylim            ###   ########.fr       */
+/*   Updated: 2024/11/08 22:13:42 by hylim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-/*------LIBRARIES------*/
-
-/*
-** Basic libraries for the previous allowed functions: open, read, write, close,
-** malloc, free, perror, strerror and exit.
-*/
 # include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
-
-/*
-** Allowed libraries: math and minilibx, witch is appended in the project's
-** folder to guarantee usage by testers.
-*/
 # include "mlx.h"
 # include <math.h>
-
-/*
-** My own libft library, completed with previously implemented functions such as
-** get_next_line and ft_printf.
-*/
 # include "ft_printf.h"
 
-/*
-** Other fdf libraries
-*/
 # include "colors.h"
 # include "keys_n_mouse.h"
 
-/*------STRUCTS-------*/
 
-/*
-** Single point struct: x, y, z and color values for each point in map.
-*/
 typedef struct s_point
 {
 	float	x;
@@ -55,10 +32,6 @@ typedef struct s_point
 	int		color;
 }			t_point;
 
-/*
-** Map data struct: holds information on the map parsed, such as a matrix with
-** its point in coordinates, total width, depth and height values passed.
-*/
 typedef struct s_map
 {
 	t_point	**coordinates;
@@ -68,9 +41,6 @@ typedef struct s_map
 	int		min_z;
 }			t_map;
 
-/*
-** Current line being printed
-*/
 typedef struct s_line
 {
 	t_point	start;
@@ -78,9 +48,6 @@ typedef struct s_line
 	float	transform_z;
 }			t_line;
 
-/*
-** Color struct: valid for line.
-*/
 typedef struct s_color
 {
 	int		start_color;
@@ -96,11 +63,6 @@ typedef struct s_color
 	int		delta_b;
 }			t_color;
 
-/*
-** Image data structure: holds information on the image pointers given by
-** MiniLibX and the buffer pointer from which final image is printed, beside the
-** current line to be transfered into the buffer.
-*/
 typedef struct s_image
 {
 	void	*image;
@@ -118,11 +80,24 @@ typedef struct s_mouse
 	int		prev_y;
 }			t_mouse;
 
-/*
-** Camera data structure: holds information about the displayed image, such as
-** type of projection, scale, translation delta and angle values for rotation on
-** three axes.
-*/
+typedef struct s_keys
+{
+	int		up;
+	int		down;
+	int		left;
+	int		right;
+	int		plus;
+	int		minus;
+	int		z;
+	int		x;
+	int		a;
+	int		q;
+	int		e;
+	int		w;
+	int		s;
+	int		d;
+}			t_keys;
+
 typedef struct s_cam
 {
 	int		projection;
@@ -136,10 +111,6 @@ typedef struct s_cam
 	double	gamma;
 }			t_cam;
 
-/*
-** FDF main data structure: holds all the information necessary for the fdf to
-** run, so its made easier to be passed by reference by sub-functions.
-*/
 typedef struct s_fdf
 {
 	t_map	*map;
@@ -150,36 +121,23 @@ typedef struct s_fdf
 	t_image	*image;
 	t_cam	*cam;
 	t_mouse	mouse;
+	t_keys	keys;
 }			t_fdf;
 
-/*-----MACROS---------*/
-
-/*
-** Window basic configuration
-*/
+# define MIN_SCALE 1.0
+# define MAX_SCALE 100.0
 # define WINDOW_NAME "fdf"
 # define WINDOW_WIDTH 1200
-# define WINDOW_HEIGHT 900
+# define WINDOW_HEIGHT 1000
 # define MAX_PIXEL 1080000
-
-/*
-** Colors configuration
-*/
 # define LINE_DEFAULT C_WHITE
-# define BACKGROUND_DEFAULT C_GREY
+# define BACKGROUND_DEFAULT C_BLACK
 # define C_TEXT C_WHITE
-
-/*
-** Conversion bases & useful angles in rad
-*/
 # define HEXADECIMAL_L_BASE "0123456789abcdef"
 # define ANG_1 0.01745329
 # define ANG_30 0.52359877
 # define ANG_45 0.78539816
 
-/*
-** Enumerator for projection names and boolean
-*/
 enum		e_projection
 {
 	ISOMETRIC,
@@ -193,32 +151,19 @@ enum		e_bool
 	TRUE
 };
 
-/*-----FUNCTIONS------*/
-
-/*
-** Read and parse maps
-*/
 t_map		*read_map(char *file_name);
 int			ft_atoi_base(char *str, char *base);
-size_t		ft_split_count(const char *s, char c);
+int			ft_split_count(char *s, char c);
 
-/*
-** Error management
-*/
 void		error(int exit_code);
 
-/*
-** Structs initialization
-*/
 t_fdf		*init_fdf(char *file_name);
 t_map		*init_map(void);
 t_image		*init_image(void *mlx);
 t_line		*init_line(t_point start, t_point end, t_fdf *fdf);
 t_cam		*init_cam(t_map *map);
+void		init_mouse_n_keys(t_fdf *fdf);
 
-/*
-** Initialization and closing utilities
-*/
 t_point		**init_coordinates(int width, int depth);
 void		center_to_origin(t_map *map);
 float		scale_to_fit(t_map *map);
@@ -228,16 +173,11 @@ void		close_map(t_fdf *fdf, int exit_code);
 t_color		*color_init(t_point start, t_point end);
 t_color		*color_pallet_init(int min_color, int max_color);
 
-/*
-** Math utilities
-*/
+int			close_window(t_fdf *fdf);
 float		absolute(float nbr);
 float		max(float a, float b);
 float		min(float a, float b);
 
-/*
-** Drawing functions
-*/
 void		render(t_fdf *fdf);
 void		draw_image(t_image *image, int max_x, int max_y);
 void		bresenham(t_fdf *fdf, t_point start, t_point end);
@@ -246,9 +186,6 @@ void		clear_image(t_image *image, int image_size);
 void		print_menu(t_fdf *fdf);
 int			get_color(t_color *color, int i_line, int line_size);
 
-/*
-** Transformation functions
-*/
 void		rotate(t_cam *cam, t_line *line);
 void		rotate_x(t_line *line, double angle);
 void		rotate_y(t_line *line, double angle);
@@ -258,14 +195,17 @@ void		transform(t_cam *cam, t_line *line);
 void		scale(t_line *line, int scale_factor);
 void		translate(t_line *line, int move_x, int move_y);
 
-/*
-** Key handle functions
-*/
 int			key_handle(int keycode, t_fdf *fdf);
+int			key_release(int keycode, t_fdf *fdf);
+int			key_press(int keycode, t_fdf *fdf);
+void		key_translate(int keycode, t_fdf *fdf);
+void		key_scale(int keycode, t_fdf *fdf);
+void		key_rotate(int keycode, t_fdf *fdf);
+void		update_translate(t_fdf *fdf);
+void		update_scale(t_fdf *fdf);
+void		update_rotate(t_fdf *fdf);
+void		update(t_fdf *fdf);
 
-/**
- * mouse handle functions
- */
 int			mouse_press(int button, int x, int y, t_fdf *fdf);
 int			mouse_release(int button, int x, int y, t_fdf *fdf);
 int			mouse_move(int x, int y, t_fdf *fdf);

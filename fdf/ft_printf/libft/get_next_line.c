@@ -6,7 +6,7 @@
 /*   By: hylim <hylim@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 20:25:52 by hylim             #+#    #+#             */
-/*   Updated: 2024/11/04 17:17:25 by hylim            ###   ########.fr       */
+/*   Updated: 2024/11/07 14:19:57 by hylim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static char	*ft_extract_line(char *buffer)
 	if (!buffer || buffer[0] == '\0')
 		return (NULL);
 	size = ft_linelen(buffer) + 1;
-	line = ft_calloc(size, sizeof (char));
+	line = ft_calloc(size, sizeof(char));
 	if (line == NULL)
 		return (NULL);
 	ft_strlcpy(line, buffer, size);
@@ -57,10 +57,10 @@ static char	*ft_read(int fd, char *buffer)
 			break ;
 		reading[byte_read] = '\0';
 		new_buffer = ft_strjoin(buffer, reading);
-		free (buffer);
+		free(buffer);
 		buffer = new_buffer;
 	}
-	free (reading);
+	free(reading);
 	return (buffer);
 }
 
@@ -74,11 +74,11 @@ static char	*ft_remove_line(char *buffer)
 		return (NULL);
 	if (buffer[0] == '\0')
 	{
-		free (buffer);
+		free(buffer);
 		return (NULL);
 	}
 	start = ft_linelen(buffer);
-	newbuffer = ft_calloc (ft_strlen(buffer) - start + 1, sizeof (char));
+	newbuffer = ft_calloc(ft_strlen(buffer) - start + 1, sizeof(char));
 	if (newbuffer == NULL)
 		return (NULL);
 	i = 0;
@@ -88,7 +88,7 @@ static char	*ft_remove_line(char *buffer)
 		i++;
 	}
 	newbuffer[i] = buffer[start + i];
-	free (buffer);
+	free(buffer);
 	return (newbuffer);
 }
 
@@ -103,10 +103,16 @@ char	*get_next_line(int fd)
 		return (NULL);
 	if (!buffer[fd])
 		buffer[fd] = ft_calloc(1, 1);
-	if (buffer[fd] == NULL)
+	if (!buffer[fd])
 		return (NULL);
 	buffer[fd] = ft_read(fd, buffer[fd]);
 	line = ft_extract_line(buffer[fd]);
+	if (!line)
+	{
+		free(buffer[fd]);
+		buffer[fd] = NULL;
+		return (NULL);
+	}
 	buffer[fd] = ft_remove_line(buffer[fd]);
 	return (line);
 }

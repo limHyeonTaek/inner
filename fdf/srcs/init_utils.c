@@ -6,7 +6,7 @@
 /*   By: hylim <hylim@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:15:59 by hylim             #+#    #+#             */
-/*   Updated: 2024/11/04 20:32:40 by hylim            ###   ########.fr       */
+/*   Updated: 2024/11/07 21:56:35 by hylim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ void	center_to_origin(t_map *map)
 		x = 0;
 		while (x < map->max_x)
 		{
-			map->coordinates[x][y].x -= map->max_x / 2;
-			map->coordinates[x][y].y -= map->max_y / 2;
+			map->coordinates[x][y].x -= (map->max_x / 2);
+			map->coordinates[x][y].y -= (map->max_y / 2);
 			x++;
 		}
 		y++;
@@ -66,6 +66,8 @@ float	scale_to_fit(t_map *map)
 	float	scale_y;
 	float	scale_factor;
 
+	if (map->max_x == 0 || map->max_y == 0)
+		return (1.0f);
 	scale_x = WINDOW_WIDTH / map->max_x;
 	scale_y = WINDOW_HEIGHT / map->max_y;
 	scale_factor = min(scale_x, scale_y);
@@ -83,4 +85,25 @@ void	reset(t_fdf *fdf)
 	fdf->cam->alpha = 0;
 	fdf->cam->beta = 0;
 	fdf->cam->gamma = 0;
+}
+
+void	init_mouse_n_keys(t_fdf *fdf)
+{
+	fdf->mouse.is_pressed = 0;
+	fdf->mouse.prev_x = 0;
+	fdf->mouse.prev_y = 0;
+	fdf->keys.up = 0;
+	fdf->keys.down = 0;
+	fdf->keys.left = 0;
+	fdf->keys.right = 0;
+	fdf->keys.plus = 0;
+	fdf->keys.minus = 0;
+	fdf->keys.z = 0;
+	fdf->keys.x = 0;
+	fdf->keys.a = 0;
+	fdf->keys.s = 0;
+	fdf->keys.d = 0;
+	fdf->keys.q = 0;
+	fdf->keys.e = 0;
+	fdf->keys.w = 0;
 }

@@ -6,7 +6,7 @@
 /*   By: hylim <hylim@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:16:51 by hylim             #+#    #+#             */
-/*   Updated: 2024/11/04 20:32:43 by hylim            ###   ########.fr       */
+/*   Updated: 2024/11/07 12:16:21 by hylim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ t_fdf	*init_fdf(char *file_name)
 	fdf->cam = init_cam(fdf->map);
 	if (!fdf->cam)
 		close_all(fdf, 6);
+	init_mouse_n_keys(fdf);
 	return (fdf);
 }
 
